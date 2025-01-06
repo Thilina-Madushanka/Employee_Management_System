@@ -1,0 +1,15 @@
+server:
+  port: 8080   # Application server port
+
+spring:
+  application:
+    name: employeeManagementSystemS1  # Name of the application
+  datasource:
+    url: jdbc:mysql://localhost:3306/employeemanagementsystems1   # Database URL
+    username: root                        # Database username
+    password: 19970521                    # Database password
+    driver-class-name: com.mysql.cj.jdbc.Driver  # Database driver
+  jpa:
+    hibernate:
+      ddl-auto: update    # Hibernate settings
+    show-sql: true        # Show SQL statements
