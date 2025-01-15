@@ -12,7 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class EmployeeService {
+
     //--------------------------save method---------------
+
+    @Autowired
+    private Employee employee;
+
     @Autowired //inject the repository. we check the data from repository.
     private EmployeeRepo employeeRepo;
 
@@ -23,7 +28,7 @@ public class EmployeeService {
         if(employeeRepo.existsById(employeeDTO.getEmpID())){
             return VarList.RSP_DUPLICATED;
         }else{
-            //dto going with dto type.we use employee type. so we find an error.there for we use to map. to that we use modal mapper.get from maven repository and paste it to dependency
+            //dto going with dto type.we use employee type. so we find an error.therefore we use to map. to that we use modal mapper.get from maven repository and paste it to dependency
             employeeRepo.save(modelMapper.map(employeeDTO, Employee.class));
             return VarList.RSP_SUCCESS;
         }

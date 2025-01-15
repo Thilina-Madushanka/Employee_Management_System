@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/employee")
 public class EmployeeController {
-    //----------------save method ---------------
+
+                    //----------------save method --------------
     @Autowired
     private EmployeeService employeeService;
 
     @Autowired
     private ResponseDTO responseDTO;
+
     @PostMapping(value = "/saveEmployee") //because post method
     public ResponseEntity saveEmployee(@RequestBody EmployeeDTO employeeDTO){
         try{
@@ -30,6 +32,7 @@ public class EmployeeController {
                 responseDTO.setMessage("success");
                 responseDTO.setContent(employeeDTO);
                 return new ResponseEntity(responseDTO, HttpStatus.ACCEPTED);
+
             }else if(res.equals("06")){
                 responseDTO.setCode(VarList.RSP_DUPLICATED);
                 responseDTO.setMessage("Employee Registered");
